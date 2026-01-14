@@ -1,0 +1,393 @@
+/* =========================
+   RESET E VARIÁVEIS
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --black: #0b0b0b;
+  --black-soft: #111827;
+
+  --white: #ffffff;
+  --white-soft: #f5f5f2;
+  --gray-text: #6b7280;
+
+  --neon-green: #25ff8f;
+  --neon-green-soft: rgba(37, 255, 143, 0.4);
+
+  --radius: 12px;
+  --container-width: 1100px;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  background-color: var(--black);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.header .container {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.logo img {
+  height: 42px;
+}
+
+/* =========================
+   NAV DESKTOP
+========================= */
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+}
+
+.nav a {
+  text-decoration: none;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--white-soft);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav a:hover {
+  background-color: rgba(255,255,255,0.08);
+  color: var(--neon-green);
+}
+
+/* =========================
+   BOTÃO HAMBURGER
+========================= */
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 5px 0;
+  background-color: var(--white);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  background-color: var(--black);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+}
+
+.hero h2 {
+  font-size: 1.4rem;
+  color: var(--neon-green);
+  margin-bottom: 10px;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 20px auto;
+  font-size: 1.1rem;
+  color: #d1d5db;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta {
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 12px 22px;
+  margin: 6px;
+  border-radius: 50px;
+
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--white);
+
+  transition: all 0.3s ease;
+}
+
+.whatsapp {
+  border: 1px solid var(--neon-green);
+  color: var(--neon-green);
+}
+
+.whatsapp:hover {
+  background-color: var(--neon-green);
+  color: var(--black);
+  box-shadow: 0 0 20px var(--neon-green-soft);
+  transform: translateY(-3px);
+}
+
+.instagram {
+  border: 1px solid #e11d48;
+  color: #e11d48;
+}
+
+.instagram:hover {
+  background-color: #e11d48;
+  color: var(--white);
+  box-shadow: 0 0 20px rgba(225,29,72,0.4);
+  transform: translateY(-3px);
+}
+
+/* =========================
+   SEÇÕES CLARAS
+========================= */
+
+.services,
+.portifolio,
+.contact {
+  background-color: var(--white-soft);
+  color: var(--black);
+  padding: 70px 0;
+}
+
+.services h3,
+.portifolio h3,
+.contact h3 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   SERVIÇOS (ACCORDION)
+========================= */
+
+.services-list {
+  list-style: none;
+}
+
+.service-item {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.service-title {
+  width: 100%;
+  padding: 14px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.service-desc {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 14px;
+  color: var(--gray-text);
+  transition: max-height 0.3s ease;
+}
+
+.service-item.active .service-desc {
+  max-height: 200px;
+  padding: 10px 14px 16px;
+}
+
+/* =========================
+   PORTFÓLIO
+========================= */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+.project-image img {
+  width: 100%;
+  display: block;
+}
+
+.project-info {
+  padding: 16px;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--neon-green);
+}
+
+/* =========================
+   SOBRE
+========================= */
+
+.about {
+  background-color: var(--black-soft);
+  color: var(--white);
+  padding: 70px 0;
+}
+
+/* =========================
+   CONTATO
+========================= */
+
+.contact {
+  text-align: center;
+}
+
+.contact form {
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-weight: bold;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  margin-top: 6px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.contact input:focus,
+.contact textarea:focus {
+  outline: none;
+  border-color: var(--neon-green);
+  box-shadow: 0 0 0 3px var(--neon-green-soft);
+}
+
+.contact button {
+  align-self: center;
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: 1px solid var(--neon-green);
+  background: none;
+  font-weight: bold;
+  color: var(--neon-green);
+  cursor: pointer;
+}
+
+.contact button:hover {
+  background-color: var(--neon-green);
+  color: var(--black);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  background-color: var(--black);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+/* =========================
+   RESPONSIVO / MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  /* MOSTRA HAMBURGER */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* ESCONDE NAV */
+  .nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    background-color: var(--black);
+    display: none;
+  }
+
+  /* NAV ATIVA (JS adiciona .active) */
+  .nav.active {
+    display: block;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .nav a {
+    width: 100%;
+    padding: 12px;
+  }
+}
