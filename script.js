@@ -1,150 +1,77 @@
-/* =====================================================
-   SCRIPT PRINCIPAL
-   Wallace Luz | Soluções Tecnológicas
-   ===================================================== */
+// MENU MOBILE
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav");
 
-/* =====================================================
-   MENU MOBILE (HAMBURGER)
-   ===================================================== */
+menuToggle.setAttribute("aria-expanded", "false");
 
-// Botão hamburger
-const menuToggle = document.querySelector('.menu-toggle');
+menuToggle.addEventListener("click", () => {
+  const isOpen = nav.classList.toggle("open");
 
-// Navegação
-const nav = document.querySelector('.nav');
-
-// Abre / fecha menu ao clicar no hamburger
-menuToggle.addEventListener('click', (event) => {
-  event.stopPropagation(); // impede conflito com outros listeners
-  nav.classList.toggle('active');
-
-  // Acessibilidade básica
-  const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-  menuToggle.setAttribute('aria-expanded', !expanded);
+  menuToggle.setAttribute("aria-expanded", isOpen);
+  document.body.style.overflow = isOpen ? "hidden" : "";
 });
 
-// Fecha menu ao clicar em um link (mobile UX)
-const navLinks = document.querySelectorAll('.nav a');
-
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    nav.classList.remove('active');
-    menuToggle.setAttribute('aria-expanded', false);
+// Fecha menu ao clicar em um link
+nav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
   });
 });
 
-// Fecha menu se clicar fora
-document.addEventListener('click', (event) => {
+// Fecha menu ao clicar fora
+document.addEventListener("click", (event) => {
   if (
+    nav.classList.contains("open") &&
     !nav.contains(event.target) &&
     !menuToggle.contains(event.target)
   ) {
-    nav.classList.remove('active');
-    menuToggle.setAttribute('aria-expanded', false);
+    nav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
   }
 });
 
-/* =====================================================
-   ACCORDION DE SERVIÇOS
-   ===================================================== */
-
-const serviceItems = document.querySelectorAll('.service-item');
+// SERVIÇOS (ACCORDION)
+const serviceItems = document.querySelectorAll(".service-item");
 
 serviceItems.forEach(item => {
-  const button = item.querySelector('.service-title');
+  const button = item.querySelector(".service-title");
+  const content = item.querySelector(".service-desc");
 
-  button.addEventListener('click', (event) => {
-    event.stopPropagation(); // evita conflito com document.click
+  button.setAttribute("aria-expanded", "false");
+  content.setAttribute("aria-hidden", "true");
 
-    // Fecha os outros serviços
+  button.addEventListener("click", () => {
+    const isActive = item.classList.contains("active");
+
     serviceItems.forEach(i => {
-      if (i !== item) {
-        i.classList.remove('active');
-      }
+      i.classList.remove("active");
+      i.querySelector(".service-title")
+        .setAttribute("aria-expanded", "false");
+      i.querySelector(".service-desc")
+        .setAttribute("aria-hidden", "true");
     });
 
-    // Abre / fecha o atual
-    item.classList.toggle('active');
+    if (!isActive) {
+      item.classList.add("active");
+      button.setAttribute("aria-expanded", "true");
+      content.setAttribute("aria-hidden", "false");
+    }
   });
 });
 
-// Fecha todos os serviços se clicar fora da seção
-document.addEventListener('click', (event) => {
-  if (!event.target.closest('.services')) {
-    serviceItems.forEach(item => {
-      item.classList.remove('active');
-    });
+// UX – TECLADO
+document.addEventListener("keydown", event => {
+  const isEnter = event.key === "Enter";
+  const isSpace = event.key === " ";
+
+  if (
+    (isEnter || isSpace) &&
+    document.activeElement.classList.contains("service-title")
+  ) {
+    event.preventDefault();
+    document.activeElement.click();
   }
-});
-
-/* =====================================================
-   ANIMAÇÃO SUAVE AO ROLAR (SCROLL REVEAL SIMPLES)
-   ===================================================== */
-
-// Seleciona seções que devem aparecer com animação
-const revealElements = document.querySelectorAll(
-  '.services, .portifolio, .about, .contact'
-);
-
-const revealOnScroll = () => {
-  const windowHeight = window.innerHeight;
-
-  revealElements.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-
-    if (sectionTop < windowHeight - 100) {
-      section.classList.add('visible');
-    }
-  });
-};
-
-// Executa ao carregar e ao rolar
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
-
-/* =====================================================
-   FORMULÁRIO (BASE SEGURA E EVOLUTIVA)
-   ===================================================== */
-
-const form = document.querySelector('.contact form');
-
-if (form) {
-  form.addEventListener('submit', (event) => {
-    event.preventDefault(); // evita reload da página
-
-    const name = form.nome.value.trim();
-    const email = form.email.value.trim();
-    const message = form.mensagem.value.trim();
-
-    // Validação simples (frontend)
-    if (!name || !email || !message) {
-      alert('Por favor, preencha todos os campos.');
-      return;
-    }
-
-    // Simulação de envio (placeholder)
-    alert('Mensagem enviada com sucesso! Em breve entrarei em contato.');
-
-    // Limpa formulário
-    form.reset();
-
-    /*
-      Futuro:
-      - enviar via fetch para backend
-      - salvar em banco
-      - enviar email automático
-      - integração com WhatsApp / CRM
-    */
-  });
-}
-
-/* =====================================================
-   MELHORIA DE UX: LINKS EXTERNOS
-   ===================================================== */
-
-// Garante que todo link externo abra em nova aba com segurança
-const externalLinks = document.querySelectorAll('a[target="_blank"]');
-
-externalLinks.forEach(link => {
-  link.setAttribute('rel', 'noopener noreferrer');
 });

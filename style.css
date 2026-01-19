@@ -92,7 +92,7 @@ body {
 }
 
 /* =========================
-   BOTÃO HAMBURGER
+   MENU MOBILE
 ========================= */
 
 .menu-toggle {
@@ -384,6 +384,7 @@ footer {
     max-height: 0;
     overflow: hidden;
     transition: max-height var(--transition);
+    text-align: right;
   }
 
   .nav.open {
