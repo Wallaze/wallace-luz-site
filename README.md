@@ -1,17 +1,18 @@
 # Wallace Luz — Site Institucional
 
-Site institucional desenvolvido com HTML, CSS e JavaScript puros, com foco em semântica, acessibilidade, organização de código e boas práticas de front-end.
+Site institucional desenvolvido com HTML, CSS e JavaScript puros, com foco em semântica, acessibilidade, organização de código e boas práticas de desenvolvimento web.
 
-O projeto serve como base evolutiva para apresentação profissional, estudos contínuos e futuras integrações (backend, formulários, automações e domínio próprio).
+O projeto funciona como base evolutiva para apresentação profissional, estudos contínuos e implementação progressiva de funcionalidades backend.
 
 ## Tecnologias
 - HTML5 semântico
 - CSS3 (layout responsivo, variáveis e organização modular)
 - JavaScript (DOM, acessibilidade e interações)
+- Node.js + Express (backend inicial)
 
 ## Objetivos técnicos
 - Estrutura clara e semântica
-- Separação de responsabilidades (HTML / CSS / JS)
+- Separação de responsabilidades (front-end e back-end)
 - Acessibilidade básica com ARIA
 - Código legível, manutenível e versionado com Git
 
@@ -19,4 +20,5 @@ O projeto serve como base evolutiva para apresentação profissional, estudos co
 Projeto em desenvolvimento contínuo, com refatorações frequentes para aprimorar arquitetura, UX e qualidade do código.
 
 ## Deploy
-Hospedado via GitHub Pages.
+Frontend hospedado via GitHub Pages.
+Backend em ambiente local, em fase inicial de desenvolvimento.

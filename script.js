@@ -62,16 +62,42 @@ serviceItems.forEach(item => {
   });
 });
 
-// UX – TECLADO
+// ACESSIBILIDADE – TECLADO
 document.addEventListener("keydown", event => {
-  const isEnter = event.key === "Enter";
-  const isSpace = event.key === " ";
-
   if (
-    (isEnter || isSpace) &&
+    (event.key === "Enter" || event.key === " ") &&
     document.activeElement.classList.contains("service-title")
   ) {
     event.preventDefault();
     document.activeElement.click();
   }
+});
+
+// FORMULÁRIO
+const form = document.querySelector(".contact form");
+if (!form) return;
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const dados = {
+    nome = document.querySelector("#nome").value,
+    email = document.querySelector("#email").value,
+    mensagem = document.querySelector("#mensagem").value
+  };
+
+  fetch("http://localhost:3000/contato", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dados)
+  });
+    .then(response => response.json())
+    .then(data => {
+      console.log("Resposta do servidor:", data);
+  })
+    .catch(error => {
+      console.error("Erro ao enviar formulário:", error);
+    });
 });
