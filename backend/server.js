@@ -1,22 +1,18 @@
 const express = require("express");
+const contatoRoutes = require("./routes/contato.routes");
+const middleware = require("./middlewares/error.middleware");
 
 const app = express();
 const PORT = 3000;
 
 // Middleware de parsing
-app.use(express.json());
-app.use(express.urlencoded({ extended: true}));
+app.use(express.json({ limit: "10kb" }));
+app.use(express.urlencoded({ extended: true, limit: "10kb"}));
 
 // Rota de contato
-app.post("/contato", (req, res) => {
-	const dados = req.body;
+app.use("/contato", contatoRoutes);
 
-	console.log(dados);
-
-	res.status(200).json({
-		mensagem: "Dados recebidos com sucesso"
-	});
-});
+app.use(errorMiddleware);
 
 app.listen(PORT, () => {
 	console.log(`Servidor rodando em http://localhost:${PORT}`);
