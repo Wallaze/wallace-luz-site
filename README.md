@@ -11,35 +11,37 @@ O projeto funciona como base evolutiva para apresentação profissional, aprendi
 ### Frontend
 - HTML5 semântico
 - CSS3 (layout responsivo, variáveis e organização modular)
-- JavaScript (manipulação do DOM, acessibilidade e interações)
+- JavaScript (manipulação do DOM, acessibilidade e interações via Fetch API)
 
 ### Backend
 - Node.js
 - Express
-- Validação manual de dados
+- CORS (Cross-Origin Resource Sharing) para integração segura
+- Validação manual de dados e sanitização
 - Tratamento de erros centralizado (middleware)
-- Arquitetura inicial com separação de responsabilidades
+- Arquitetura profissional com separação de responsabilidades (MVC parcial)
 
 ---
 
 ## Objetivos técnicos
 
 - Estrutura clara e semântica
-- Separação de responsabilidades entre frontend, rotas, controllers e middlewares
-- Validação de dados no backend
-- Tratamento de erros padronizado via middleware
-- Acessibilidade básica com uso de ARIA
+- Integração Full Stack: Frontend enviando dados JSON para o Backend
+- Separação de responsabilidades: Rotas, Controllers, Middlewares e Classes de Erro
+- Validação rigorosa de dados no servidor com respostas HTTP adequadas (400, 422)
+- Acessibilidade avançada: Uso de ARIA, controle de foco e navegação via teclado
+- Gestão de estado do DOM para prevenir erros de carregamento assíncrono
 - Código legível, manutenível e versionado com Git
 
 ---
 
 ## Status do projeto
 
-Projeto em desenvolvimento contínuo, com refatorações incrementais voltadas à melhoria da arquitetura, qualidade do código, segurança e experiência do usuário.
+Projeto em desenvolvimento contínuo. A comunicação entre Frontend e Backend já está operacional, com tratamento de erros funcional e interface responsiva. Próximas etapas envolvem a persistência de dados em banco de dados.
 
 ---
 
 ## Deploy
 
 - Frontend hospedado via GitHub Pages
-- Backend em ambiente local, em fase inicial de desenvolvimento
+- Backend em ambiente local, pronto para integração com banco de dados
